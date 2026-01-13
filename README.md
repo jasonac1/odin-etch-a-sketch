@@ -12,3 +12,4 @@ This is my take on the Etch-a-Sketch project of The Odin Project. The project ai
 
 ### Credits
 - Roboto font by Google from https://fonts.google.com/specimen/Roboto
+- Pastel color palette by schemecolor from https://www.schemecolor.com/pastel-green-and-red.php
