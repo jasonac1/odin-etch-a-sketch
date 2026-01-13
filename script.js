@@ -31,8 +31,6 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
 createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 
-let cells = document.querySelectorAll(".cell");
-
 function addCellHoverEffect(cells) {
     cells.forEach(cell => {
         cell.addEventListener("mouseenter", (event) => {
@@ -41,4 +39,5 @@ function addCellHoverEffect(cells) {
     });
 }
 
+let cells = document.querySelectorAll(".cell");
 addCellHoverEffect(cells);
