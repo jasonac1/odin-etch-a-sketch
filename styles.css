@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    margin-block: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 6rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.canvas {
+    height: 720px;
+    width: 720px;
+    outline: auto;
+}
+
