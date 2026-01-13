@@ -20,8 +20,20 @@ h1 {
 }
 
 .canvas {
+    display: flex;
+    flex-direction: column;
     height: 720px;
     width: 720px;
     outline: auto;
 }
+
+.row {
+    display: flex;
+    /* outline: auto; */
+}
+
+.cell {
+    border: 1px solid gray;
+}
+
 
