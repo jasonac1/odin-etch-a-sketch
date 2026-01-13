@@ -57,6 +57,11 @@ createNewCanvasButton.addEventListener("click", () => {
         alert("Invalid input! Used default of 16");
     }
 
+    if(canvasCellCount > 100) {
+        canvasCellCount = 100;
+        alert("Can't set to more than 100!");
+    }
+
     canvasCellCount = Math.floor(canvasCellCount);
 
     deleteCanvasGrid(canvas);
