@@ -19,6 +19,11 @@ h1 {
     font-size: 3rem;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 button {
     background-color: #e0e0e0;
     border: 2px solid #888;
@@ -34,8 +39,6 @@ button {
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    height: 720px;
-    width: 720px;
 }
 
 .row {

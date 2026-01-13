@@ -2,7 +2,13 @@ const canvas = document.querySelector(".canvas");
 const CANVAS_SIZE_IN_PIXELS = 720;
 let canvasCellCount = 16; 
 
+const buttonsContainer = document.querySelector(".buttons");
 const createNewCanvasButton = document.querySelector(".button-new-canvas");
+const randomizeColorButton = document.querySelector(".button-randomize-color");
+
+canvas.style.height = `${CANVAS_SIZE_IN_PIXELS}px`;
+canvas.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
+buttonsContainer.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
 
 // terminology: 
 // pixel = px (on your screen)
@@ -67,3 +73,4 @@ createNewCanvasButton.addEventListener("click", () => {
     deleteCanvasGrid(canvas);
     createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 });
+
