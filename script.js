@@ -39,7 +39,14 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
             cell.addEventListener("mouseenter", (event) => {
-                cell.style.backgroundColor = "black"; 
+                if(toggleRandomizeColorButton.classList.contains("randomize-color-on")) {
+                    cell.style.backgroundColor = 
+                    `rgb(${random(256)}, ${random(256)}, ${random(256)})`;                 
+                }
+
+                else {
+                    cell.style.backgroundColor = "black"; 
+                }
             });
         });
     }
@@ -54,6 +61,10 @@ function deleteCanvasGrid(canvas) {
     while(canvas.lastElementChild) {
         canvas.removeChild(canvas.lastElementChild);
     }
+}
+
+function random(max) {
+    return Math.floor(Math.random() * max);
 }
 
 createNewCanvasButton.addEventListener("click", () => {
