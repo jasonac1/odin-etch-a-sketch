@@ -36,11 +36,13 @@ button {
 }
 
 .randomize-color-on {
-    background-color: red;
+    background-color: #F09494;
+    border: 2px solid red;
 }
 
 .randomize-color-off {
-    background-color: green;
+    background-color: #AAE2A8;
+    border: 2px solid green;    
 }
 
 .canvas {
