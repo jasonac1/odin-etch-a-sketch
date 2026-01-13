@@ -24,15 +24,13 @@ h1 {
     justify-content: space-evenly;
 }
 
-button {
+button, .container-opacity {
     background-color: #e0e0e0;
     border: 2px solid #888;
     font-size: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    width: 15rem;
+    width: 10rem;
 }
 
 .randomize-color-on {
@@ -43,6 +41,17 @@ button {
 .randomize-color-off {
     background-color: #AAE2A8;
     border: 2px solid green;    
+}
+
+.container-opacity {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    display: block;
+    width: 6rem;
 }
 
 .canvas {
