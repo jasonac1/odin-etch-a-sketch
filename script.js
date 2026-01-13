@@ -4,7 +4,7 @@ let canvasCellCount = 16;
 
 const buttonsContainer = document.querySelector(".buttons");
 const createNewCanvasButton = document.querySelector(".button-new-canvas");
-const randomizeColorButton = document.querySelector(".button-randomize-color");
+const toggleRandomizeColorButton = document.querySelector(".button-toggle-randomize-color");
 
 canvas.style.height = `${CANVAS_SIZE_IN_PIXELS}px`;
 canvas.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
@@ -74,3 +74,13 @@ createNewCanvasButton.addEventListener("click", () => {
     createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 });
 
+toggleRandomizeColorButton.addEventListener("click", () => {
+    if(toggleRandomizeColorButton.classList.contains("randomize-color-off")) {
+        toggleRandomizeColorButton.textContent = "Toggle off randomize color"; 
+    } else {
+        toggleRandomizeColorButton.textContent = "Toggle on randomize color"; 
+    }
+
+    toggleRandomizeColorButton.classList.toggle("randomize-color-on");
+    toggleRandomizeColorButton.classList.toggle("randomize-color-off");
+});

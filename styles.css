@@ -35,6 +35,14 @@ button {
     width: 15rem;
 }
 
+.randomize-color-on {
+    background-color: red;
+}
+
+.randomize-color-off {
+    background-color: green;
+}
+
 .canvas {
     border: 1px solid black;
     display: flex;
