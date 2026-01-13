@@ -38,7 +38,7 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
-            cell.addEventListener("mouseenter", (event) => {
+            cell.addEventListener("mouseenter", () => {
                 if(toggleRandomizeColorButton.classList.contains("randomize-color-on")) {
                     cell.style.backgroundColor = 
                     `rgb(${random(256)}, ${random(256)}, ${random(256)})`;                 
