@@ -2,6 +2,8 @@ const canvas = document.querySelector(".canvas");
 const CANVAS_SIZE_IN_PIXELS = 720;
 let canvasCellCount = 16; 
 
+const createNewCanvasButton = document.querySelector(".button-new-canvas");
+
 // terminology: 
 // pixel = px (on your screen)
 // cell = square div inside canvas
@@ -27,17 +29,36 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
         
         canvas.appendChild(rowCell);
     }
+
+    function addCellHoverEffect(cells) {
+        cells.forEach(cell => {
+            cell.addEventListener("mouseenter", (event) => {
+                cell.style.backgroundColor = "black"; 
+            });
+        });
+    }
+
+    let cells = document.querySelectorAll(".cell");
+    addCellHoverEffect(cells);
 }
 
 createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 
-function addCellHoverEffect(cells) {
-    cells.forEach(cell => {
-        cell.addEventListener("mouseenter", (event) => {
-            cell.style.backgroundColor = "black"; 
-        });
-    });
+function deleteCanvasGrid(canvas) {
+    while(canvas.lastElementChild) {
+        canvas.removeChild(canvas.lastElementChild);
+    }
 }
 
-let cells = document.querySelectorAll(".cell");
-addCellHoverEffect(cells);
+createNewCanvasButton.addEventListener("click", () => {
+    canvasCellCount = +prompt("Enter new canvas size (e.g: 3)");
+    if(isNaN(canvasCellCount)) {
+        canvasCellCount = 16;
+        alert("Invalid input! Used default of 16");
+    }
+
+    canvasCellCount = Math.floor(canvasCellCount);
+
+    deleteCanvasGrid(canvas);
+    createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
+});
