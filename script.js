@@ -31,3 +31,14 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
 createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 
+let cells = document.querySelectorAll(".cell");
+
+function addCellHoverEffect(cells) {
+    cells.forEach(cell => {
+        cell.addEventListener("mouseenter", (event) => {
+            cell.style.backgroundColor = "black"; 
+        });
+    });
+}
+
+addCellHoverEffect(cells);
