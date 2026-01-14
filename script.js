@@ -41,7 +41,9 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
-            cell.addEventListener("mouseenter", () => {
+            cell.addEventListener("mouseenter", (event) => {
+                let cell = event.target;
+
                 // if bg opacity is not 100% it returns rgba(w, x, y, z) else rgb(x, y, z)     
                 const cellBackgroundColorStyle = window.getComputedStyle(cell)
                 .getPropertyValue("background-color");
@@ -110,7 +112,9 @@ createNewCanvasButton.addEventListener("click", () => {
     createCanvasGrid(canvas, CANVAS_SIZE_IN_PIXELS, canvasCellCount);
 });
 
-toggleRandomizeColorButton.addEventListener("click", () => {
+toggleRandomizeColorButton.addEventListener("click", (event) => {
+    let toggleRandomizeColorButton = event.target;
+
     if(toggleRandomizeColorButton.classList.contains("randomize-color-off")) {
         toggleRandomizeColorButton.textContent = "Toggle off randomize color"; 
     } else {
@@ -121,7 +125,9 @@ toggleRandomizeColorButton.addEventListener("click", () => {
     toggleRandomizeColorButton.classList.toggle("randomize-color-off");
 });
 
-opacitySlider.addEventListener("input", () => {
+opacitySlider.addEventListener("input", (event) => {
+    let opacitySlider = event.target;
+
     strokeOpacity = +opacitySlider.value;
 
     // floor to fix floating point issues
