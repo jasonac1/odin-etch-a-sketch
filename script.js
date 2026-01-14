@@ -1,10 +1,13 @@
 const canvas = document.querySelector(".canvas");
 const CANVAS_SIZE_IN_PIXELS = 720;
 let canvasCellCount = 16; 
+let strokeOpacity = 1;
 
 const buttonsContainer = document.querySelector(".buttons");
 const createNewCanvasButton = document.querySelector(".button-new-canvas");
 const toggleRandomizeColorButton = document.querySelector(".button-toggle-randomize-color");
+const opacitySlider = document.querySelector(".input-opacity");
+const opacityLabel = document.querySelector(".label-opacity");
 
 canvas.style.height = `${CANVAS_SIZE_IN_PIXELS}px`;
 canvas.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
@@ -39,13 +42,35 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
             cell.addEventListener("mouseenter", () => {
+                // if bg opacity is not 100% it returns rgba(w, x, y, z) else rgb(x, y, z)     
+                const cellBackgroundColorStyle = window.getComputedStyle(cell)
+                .getPropertyValue("background-color");
+
+                const cellRGBValues = cellBackgroundColorStyle
+                .slice(cellBackgroundColorStyle
+                .indexOf("(") + 1, cellBackgroundColorStyle
+                .indexOf(")"))
+                .split(", ");
+                
+                // get cell opacity from computed value and then adds stroke opacity to it
+                // (darkening)
+                let cellOpacity = 0;
+                if(cellRGBValues.length === 3) cellOpacity = 1; // rgb
+                else if(cellRGBValues.length === 4) cellOpacity = +cellRGBValues[3]; //rgbA grab 
+                // Alpha
+                
+                cellOpacity += strokeOpacity;
+                if (cellOpacity > 1) cellOpacity = 1; // so it doesnt go over 1
+
                 if(toggleRandomizeColorButton.classList.contains("randomize-color-on")) {
-                    cell.style.backgroundColor = 
-                    `rgb(${random(256)}, ${random(256)}, ${random(256)})`;                 
+                    cell.style.background = 
+                    `
+                    rgb(${random(256)} ${random(256)} ${random(256)} / ${(cellOpacity * 100)}%)
+                    `;
                 }
 
                 else {
-                    cell.style.backgroundColor = "black"; 
+                    cell.style.background = `rgb(0 0 0 / ${cellOpacity * 100}%)`; 
                 }
             });
         });
@@ -94,4 +119,11 @@ toggleRandomizeColorButton.addEventListener("click", () => {
 
     toggleRandomizeColorButton.classList.toggle("randomize-color-on");
     toggleRandomizeColorButton.classList.toggle("randomize-color-off");
+});
+
+opacitySlider.addEventListener("input", () => {
+    strokeOpacity = +opacitySlider.value;
+
+    // floor to fix floating point issues
+    opacityLabel.textContent = `Opacity: ${Math.floor(strokeOpacity * 100)}%`;
 });
