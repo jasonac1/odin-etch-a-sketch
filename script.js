@@ -43,7 +43,7 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
-            cell.addEventListener("mousemove", (event) => {
+            cell.addEventListener("mouseenter", (event) => {
                 if(!inDrawMode) return;
 
                 let cell = event.target;
