@@ -13,6 +13,8 @@ canvas.style.height = `${CANVAS_SIZE_IN_PIXELS}px`;
 canvas.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
 buttonsContainer.style.width = `${CANVAS_SIZE_IN_PIXELS}px`;
 
+let inDrawMode = false; 
+
 // terminology: 
 // pixel = px (on your screen)
 // cell = square div inside canvas
@@ -41,7 +43,9 @@ function createCanvasGrid(canvas, canvasSizeInPixels, canvasCellCount) {
 
     function addCellHoverEffect(cells) {
         cells.forEach(cell => {
-            cell.addEventListener("mouseenter", (event) => {
+            cell.addEventListener("mousemove", (event) => {
+                if(!inDrawMode) return;
+
                 let cell = event.target;
 
                 // if bg opacity is not 100% it returns rgba(w, x, y, z) else rgb(x, y, z)     
@@ -133,3 +137,7 @@ opacitySlider.addEventListener("input", (event) => {
     // floor to fix floating point issues
     opacityLabel.textContent = `Opacity: ${Math.floor(strokeOpacity * 100)}%`;
 });
+
+document.addEventListener("mousedown", () => inDrawMode = true);
+document.addEventListener("mouseup", () => inDrawMode = false);
+document.addEventListener("dragstart", (event) => event.preventDefault());
