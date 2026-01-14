@@ -140,4 +140,5 @@ opacitySlider.addEventListener("input", (event) => {
 
 document.addEventListener("mousedown", () => inDrawMode = true);
 document.addEventListener("mouseup", () => inDrawMode = false);
-document.addEventListener("dragstart", (event) => event.preventDefault());
+document.addEventListener("dragstart", (event) => event.preventDefault()); // prevent default
+// drag element behavior
